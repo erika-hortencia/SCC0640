@@ -1,4 +1,7 @@
+import cx_Oracle
 from tkinter import *
+
+connection = cx_Oracle.connect('oe', 'oracle', 'myservice')
 
 def insertion():
     selectedOptionText['text'] ='Inserindo'
