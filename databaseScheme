@@ -8,8 +8,7 @@ CREATE TABLE tMoradorDeRua(
     CONSTRAINT PK_MoradorDeRua PRIMARY KEY (CPF)
 );
 
-/*INSERT INTO MoradorDeRua
-    VALUES(06955587145, 'HENRIQUE', TO_DATE('28/04/2001','dd/mm/yyyy'), TO_DATE('30/11/2021','dd/mm/yyyy'), 'M', 'MEDIO');*/
+
 
 CREATE TABLE tAlergias(
     MoradorDeRua NUMBER NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE tAlergias(
 
 CREATE TABLE tHabilidades(
     MoradorDeRua NUMBER NOT NULL,
-    Habilidades VARCHAR(100), /*conferir na parte 1*/
+    Habilidades NUMBER, /*conferir na parte 1*/
     CONSTRAINT PK_Habilidades PRIMARY KEY (MoradorDeRua, Habilidades),
     CONSTRAINT FK_Habilidades FOREIGN KEY (MoradorDeRua) REFERENCES tMoradorDeRua(CPF) ON DELETE SET NULL
 );
