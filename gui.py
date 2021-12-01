@@ -10,6 +10,18 @@ connection = sqlConnection.connect()
 def insertion():
     selectedOptionText['text'] ='Inserindo'
     #print('Inserindo')
+    """
+    TESTE DE INSERÇÃO
+    """
+    cur = connection.cursor()
+    sql_insert = """INSERT INTO TMORADORDERUA VALUES(999991293,'JOHN DOE',TO_DATE('28/04/2003','dd/mm/yyyy'),TO_DATE('30/11/2015','dd/mm/yyyy'),'M', 'MEDIO')"""
+    cur.execute(sql_insert)
+    connection.commit()
+    cur.execute('select * from tMoradorDeRua')
+    for line in cur:
+        print(line)
+    cur.close()
+    
 
 def search():
     #print('Searching')
@@ -38,3 +50,4 @@ selectedOptionText = Label(homeWindow, text=" ")
 selectedOptionText.grid(column=0, row=4, padx= 60, pady= 45)
 
 homeWindow.mainloop()
+connection.close()
