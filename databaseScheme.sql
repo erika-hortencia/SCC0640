@@ -37,42 +37,47 @@ CREATE TABLE tInstituicao(
 
 CREATE TABLE tTipoInstituicao(
     CNPJ NUMBER NOT NULL,
-    Tipo VARCHAR(10) NOT NULL,
+    Tipo VARCHAR(15) NOT NULL,
     CONSTRAINT PK_TipoInstituicao PRIMARY KEY (CNPJ, Tipo),
     CONSTRAINT FK_TipoInstituicao FOREIGN KEY (CNPJ) REFERENCES tInstituicao(CNPJ) ON DELETE SET NULL
 );
 
 CREATE TABLE tTipoEmpresa(
     CNPJ NUMBER NOT NULL,
-    Categoria VARCHAR(40) NOT NULL,
+    Categoria VARCHAR(10) NOT NULL,
     CONSTRAINT PK_TipoEmpresa PRIMARY KEY (CNPJ),
     CONSTRAINT FK_TipoEmpresa FOREIGN KEY (CNPJ) REFERENCES tInstituicao(CNPJ) ON DELETE SET NULL
 );
 
+CREATE TABLE tAssessoria(
+    TipoEmpresa NUMBER NOT NULL,
+    Categoria VARCHAR(30),
+    CONSTRAINT PK_Assessoria PRIMARY KEY (TipoEmpresa),
+    CONSTRAINT SK_Asseroria UNIQUE (Categoria),
+    CONSTRAINT FK_Assessoria FOREIGN KEY (TipoEmpresa) REFERENCES tTipoEmpresa(CNPJ) ON DELETE SET NULL
+);
+
 CREATE TABLE tPrivada(
     TipoEmpresa NUMBER NOT NULL,
+    Categoria VARCHAR(40) NOT NULL,
     CONSTRAINT PK_Privada PRIMARY KEY (TipoEmpresa),
-    CONSTRAINT FK_Privada FOREIGN KEY (TipoEmpresa) REFERENCES tTipoEmpresa(CNPJ) ON DELETE SET NULL
+    CONSTRAINT SK_Privada UNIQUE (TipoEmpresa, Categoria),
+    CONSTRAINT FK_Privada1 FOREIGN KEY (TipoEmpresa) REFERENCES tTipoEmpresa(CNPJ) ON DELETE SET NULL
 );
+
 
 CREATE TABLE tAtendimento(
     id NUMBER NOT NULL,
     Privada NUMBER NOT NULL,
     MoradorDeRua NUMBER NOT NULL,
     DataAtendimento DATE NOT NULL,
-    Nome VARCHAR(30) NOT NULL,
-    Categoria VARCHAR(30),
     CONSTRAINT PK_Atendimento PRIMARY KEY (id),
     CONSTRAINT SK_Atendimento UNIQUE (Privada, MoradorDeRua, DataAtendimento),
     CONSTRAINT FK_Atendimento1 FOREIGN KEY (Privada) REFERENCES tPrivada(TipoEmpresa) ON DELETE SET NULL,
     CONSTRAINT FK_Atendimento2 FOREIGN KEY (MoradorDeRua) REFERENCES tMoradorDeRua(CPF) ON DELETE SET NULL
 );
 
-CREATE TABLE tAssessoria(
-    TipoEmpresa NUMBER NOT NULL,
-    CONSTRAINT PK_Assessoria PRIMARY KEY (TipoEmpresa),
-    CONSTRAINT FK_Assessoria FOREIGN KEY (TipoEmpresa) REFERENCES tTipoEmpresa(CNPJ) ON DELETE SET NULL
-);
+
 
 CREATE TABLE tConsulta(
     id NUMBER NOT NULL,
@@ -81,8 +86,9 @@ CREATE TABLE tConsulta(
     DataConsuta DATE NOT NULL,
     Categoria VARCHAR(30),
     CONSTRAINT PK_Consulta PRIMARY KEY (id),
-    CONSTRAINT SK_Consulta UNIQUE (Assessoria, MoradorDeRua, DataConsuta),
-    CONSTRAINT FK_Consulta FOREIGN KEY (Assessoria) REFERENCES tAssessoria(TipoEmpresa)
+    CONSTRAINT SK_Consulta UNIQUE (Assessoria, MoradorDeRua, DataConsuta, Categoria),
+    CONSTRAINT FK_Consulta1 FOREIGN KEY (Categoria) REFERENCES tAssessoria(Categoria) ON DELETE SET NULL,
+    CONSTRAINT FK_Consulta2 FOREIGN KEY (Assessoria) REFERENCES tAssessoria(TipoEmpresa) ON DELETE SET NULL
 );
 
 CREATE TABLE tPontoDeColeta(
@@ -106,24 +112,10 @@ CREATE TABLE tProduto(
     NomedoProduto VARCHAR(40) NOT NULL,
     NomedoFabricante VARCHAR(40) NOT NULL,
     Volume NUMBER,
-    Validade NUMBER, /*alterei de Idade para Validade*/
+    Validade DATE, /*alterei de Idade para Validade*/
     /*Quantidade disponivel NUMBER - derivado*/
     CONSTRAINT PK_Produto PRIMARY KEY (id),
-    CONSTRAINT SK_Produto UNIQUE (Estoque, NomedoProduto, NomedoFabricante),
     CONSTRAINT FK_Produto FOREIGN KEY (Estoque) REFERENCES tEstoque(PontoDeColeta) ON DELETE SET NULL
-);
-
-CREATE TABLE tFornecimentoProduto(
-    id NUMBER NOT NULL,
-    Produto NUMBER NOT NULL,
-    MoradorDeRua NUMBER NOT NULL,
-    DataFornecimento DATE NOT NULL,
-    Quantidade NUMBER,
-    Unidade VARCHAR(10),
-    CONSTRAINT PK_FornecimentoProduto PRIMARY KEY (id),
-    CONSTRAINT SK_FornecimentoProduto UNIQUE (Produto, MoradorDeRua, DataFornecimento),
-    CONSTRAINT FK_FornecimentoProduto1 FOREIGN KEY (Produto) REFERENCES tProduto(id),
-    CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES tMoradorDeRua(CPF)
 );
 
 CREATE TABLE tAlimento(
@@ -131,8 +123,7 @@ CREATE TABLE tAlimento(
     Peribilidade CHAR(1),
     TeorCalorico NUMBER,
     DataVencimento DATE,
-    ComposicaoNutricional VARCHAR(30),
-    CONSTRAINT PK_Alimento PRIMARY KEY (Produto),
+    /*CONSTRAINT PK_Alimento PRIMARY KEY (Produto),*/
     CONSTRAINT FK_Alimento FOREIGN KEY (Produto) REFERENCES tProduto(id) ON DELETE SET NULL
 );
 
@@ -145,13 +136,25 @@ CREATE TABLE tMedicamento(
     CONSTRAINT FK_Medicamento FOREIGN KEY (Produto) REFERENCES tProduto(id) ON DELETE SET NULL
 );
 
+CREATE TABLE tFornecimentoProduto(
+    id NUMBER NOT NULL,
+    Produto NUMBER NOT NULL,
+    MoradorDeRua NUMBER NOT NULL,
+    DataFornecimento DATE NOT NULL,
+    Unidade VARCHAR(10),
+    CONSTRAINT PK_FornecimentoProduto PRIMARY KEY (id),
+    CONSTRAINT SK_FornecimentoProduto UNIQUE (Produto, MoradorDeRua, DataFornecimento),
+    CONSTRAINT FK_FornecimentoProduto1 FOREIGN KEY (Produto) REFERENCES tProduto(id),
+    CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES tMoradorDeRua(CPF)
+);
+
+
+
 CREATE TABLE tDoacaoProduto(
     id NUMBER NOT NULL,
     Produto NUMBER NOT NULL,
     Doador NUMBER NOT NULL,
     DataDoacao DATE NOT NULL,
-    Quantidade NUMBER,
-    Unidade VARCHAR(15),
     CONSTRAINT PK_DoacaoProduto PRIMARY KEY (id),
     CONSTRAINT SK_DoacaoProduto UNIQUE (Produto, Doador, DataDoacao),
     CONSTRAINT FK_DoacaoProduto FOREIGN KEY (Produto) REFERENCES tProduto(id) ON DELETE SET NULL
@@ -160,7 +163,7 @@ CREATE TABLE tDoacaoProduto(
 CREATE TABLE tTipoPessoa(
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
-    Tipo VARCHAR(10) NOT NULL,
+    Tipo VARCHAR(20) NOT NULL,
     CONSTRAINT PK_TipoPessoa PRIMARY KEY (CPF)
 );
 
@@ -239,8 +242,6 @@ CREATE TABLE tOportunidade(
     Privada NUMBER NOT NULL,
     Assessoria NUMBER NOT NULL,
     DataOP DATE NOT NULL,
-    Nome VARCHAR(40) NOT NULL,
-    Categoria VARCHAR(40) NOT NULL,
     CONSTRAINT PK_Oportunidade PRIMARY KEY (id),
     CONSTRAINT SK_Oportunidade UNIQUE (Privada, Assessoria, DataOP),
     CONSTRAINT FK_Oportunidade_1 FOREIGN KEY (Privada) REFERENCES tPrivada(TipoEmpresa) ON DELETE SET NULL,
@@ -253,10 +254,10 @@ CREATE TABLE tServico(
     Assessoria NUMBER NOT NULL,
     DataServ DATE NOT NULL,
     NomeServ VARCHAR(40) NOT NULL,
-    Categoria VARCHAR(40) NOT NULL,
     CONSTRAINT PK_Servico PRIMARY KEY (id),
-    CONSTRAINT SK_Servico UNIQUE (Privada, Assessoria, DataServ),
+    CONSTRAINT SK_Servico UNIQUE (Privada, Assessoria, DataServ, NomeServ),
     CONSTRAINT FK_Servico_1 FOREIGN KEY (Privada) REFERENCES tPrivada(TipoEmpresa) ON DELETE SET NULL,
-    CONSTRAINT FK_Servico_2 FOREIGN KEY (Assessoria) REFERENCES tAssessoria(TipoEmpresa) ON DELETE SET NULL
+    CONSTRAINT FK_Servico_2 FOREIGN KEY (Assessoria) REFERENCES tAssessoria(TipoEmpresa) ON DELETE SET NULL,
+    CONSTRAINT FK_Servico_3 FOREIGN KEY (NomeServ) REFERENCES tPrivada(Categoria) ON DELETE SET NULL
 );
 
