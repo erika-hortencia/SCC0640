@@ -201,14 +201,14 @@ CREATE TABLE tVestuario(
 
 CREATE TABLE tHigiene(
     Produto NUMBER NOT NULL,
-    ComposicaoQuimica VARCHAR(30),
+    ComposicaoQuimica VARCHAR(100),
     CONSTRAINT PK_Higiene PRIMARY KEY (Produto),
     CONSTRAINT FK_higiene FOREIGN KEY (Produto) REFERENCES tProduto(id) ON DELETE SET NULL
 );
 
 CREATE TABLE tTipoProduto(
     Produto NUMBER NOT NULL,
-    Categoria VARCHAR(10),
+    Categoria VARCHAR(1,
     CONSTRAINT PK_TipoProduto PRIMARY KEY (Produto, Categoria),
     CONSTRAINT FK_TipoProduto FOREIGN KEY (Produto) REFERENCES tProduto(id)ON DELETE SET NULL
 );
