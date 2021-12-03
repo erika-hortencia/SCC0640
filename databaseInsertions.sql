@@ -1,207 +1,181 @@
 /*Tabela MoradorDeRua*/
-INSERT INTO tMoradorDeRua
+INSERT INTO MoradorDeRua
     VALUES(06955111458, 'HENRIQUE', TO_DATE('28/04/2001','dd/mm/yyyy'), TO_DATE('30/11/2015','dd/mm/yyyy'), 'M', 'FUNDAMENTAL');
 
-INSERT INTO tMoradorDeRua
+INSERT INTO MoradorDeRua
     VALUES(06955587600, 'LADY GAGA', TO_DATE('12/07/1985','dd/mm/yyyy'), TO_DATE('15/06/2013','dd/mm/yyyy'), 'F', 'SUPERIOR COMPLETO');
 
-INSERT INTO tMoradorDeRua
+INSERT INTO MoradorDeRua
     VALUES(03557111454, 'KEANU REEVES', TO_DATE('02/08/1950','dd/mm/yyyy'), TO_DATE('01/12/2011','dd/mm/yyyy'), 'M', 'MEDIO');
 
-INSERT INTO tMoradorDeRua
+INSERT INTO MoradorDeRua
     VALUES(01467587600, 'IVETE SANGALO', TO_DATE('12/07/1976','dd/mm/yyyy'), TO_DATE('09/01/2000','dd/mm/yyyy'), 'F', 'FUNDAMENTAL COMPLETO');
 
-INSERT INTO tMoradorDeRua
+INSERT INTO MoradorDeRua
     VALUES(01467192700, 'JACK DORSEY', TO_DATE('12/07/1976','dd/mm/yyyy'), TO_DATE('01/12/2001','dd/mm/yyyy'), 'M', 'MEDIO COMPLETO');
 
 /*Tabela Alergias*/
-INSERT INTO tAlergias
+INSERT INTO Alergias
     VALUES(06955111458, 'POEIRA, IBUPROFENO');
 
-INSERT INTO tAlergias
+INSERT INTO Alergias
     VALUES(01467587600, 'UVA, AMOXICILINA, NOZES');
 
 /*Tabela Habilidades*/ /*por hora: 0<habilidades<10*/
-INSERT INTO tHabilidades
+INSERT INTO Habilidades
     VALUES(06955111458, 4);
 
-INSERT INTO tHabilidades
+INSERT INTO Habilidades
     VALUES(01467587600,8);
 
-INSERT INTO tHabilidades
+INSERT INTO Habilidades
     VALUES(03557111454, 6);
 
-INSERT INTO tHabilidades
+INSERT INTO Habilidades
     VALUES(06955587600, 6);
 
-INSERT INTO tHabilidades
+INSERT INTO Habilidades
     VALUES(01467192700, 4);
 
 
 /*Tabela Instituição*/
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(29283948625874, 'PPL MALL', 13560980, 'SP', 'CAMPINAS', 'AV BRASIL', 57);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(29210000625874, 'NGN ASSESSORIAS', 68960980, 'SP', 'CAMPINAS', 'RUA PRINCESA ISABEL', 1298);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(48512369745214, 'SLP ABRIGOS SEDE', 78459678, 'SP', 'CAMPINAS', 'AV AFONSO PENA', 2240);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(48512369745215, 'SLP ABRIGOS 2', 78458645, 'SP', 'CAMPINAS', 'AV MATO GROSSO', 220);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(48512369745216, 'SLP ABRIGOS 3', 78465632, 'SP', 'CAMPINAS', 'RUA ERNESTO GEISEL', 2240);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(05948237295069, 'MEDCLIN CLINICA', 15940796, 'SP', 'CAMPINAS', 'AV DOM PEDRO I', 6790);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(74587521681254, 'MACGYVER BEAUTY', 14785629, 'SP', 'CAMPINAS', 'AV FLORESTAL', 500);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(75716251241845, 'MFM EMPRENTEIRAS', 47846069, 'SP', 'CAMPINAS', 'AV YOKOHAMA', 1236);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(74575892361254, 'FREE LANCERS HTR', 14775982, 'SP', 'CAMPINAS', 'RUA JASMELINDA', 168);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(14785236995123, 'SUPPPLYS', 45879632, 'SP', 'CAMPINAS', 'RUA JASMELINDA', 168);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(98230679583729, 'SUPRIMENTOS SA', 20695849, 'SP', 'CAMPINAS', 'RUA PRESIDENTE VARGAS', 557);
 
-INSERT INTO tInstituicao
+INSERT INTO Instituicao
     VALUES(23172482000162, 'KPJ ASSESSORIA', 13010080, 'SP', 'CAMPINAS', 'AV CAMPOS SALES', 480);
 
 /*Tabela TipoInstituicao*/
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(29283948625874, 'EMPRESA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(29210000625874, 'EMPRESA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(48512369745214, 'DORMITORIO');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(48512369745215, 'DORMITORIO');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(48512369745216, 'DORMITORIO');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(05948237295069, 'EMPRESA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(74587521681254, 'EMPRESA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(75716251241845, 'EMPRESA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(74575892361254, 'EMPRESA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(14785236995123, 'PONTO DE COLETA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(98230679583729, 'PONTO DE COLETA');
 
-INSERT INTO tTipoInstituicao
+INSERT INTO TipoInstituicao
     VALUES(23172482000162, 'EMPRESA');
 
  /*Tabela TipoEmpresa*/
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(29283948625874, 'PRIVADA');
 
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(29210000625874, 'ASSESSORIA');
 
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(05948237295069, 'PRIVADA');
 
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(74587521681254, 'PRIVADA');
 
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(75716251241845, 'PRIVADA');
 
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(74575892361254, 'PRIVADA');
 
-INSERT INTO tTipoEmpresa
+INSERT INTO TipoEmpresa
     VALUES(23172482000162, 'ASSESSORIA');
 
 /*Tabela Privada*/
-INSERT INTO tPrivada
+INSERT INTO Privada
     VALUES(29283948625874, 'OPORTUNIDADE');
 
-INSERT INTO tPrivada
+INSERT INTO Privada
     VALUES(05948237295069, 'SAUDE');
 
-INSERT INTO tPrivada
+INSERT INTO Privada
     VALUES(74587521681254, 'ESTETICA');
 
-INSERT INTO tPrivada
+INSERT INTO Privada
     VALUES(75716251241845, 'OPORTUNIDADE');
 
-INSERT INTO tPrivada
+INSERT INTO Privada
     VALUES(74575892361254, 'OPORTUNIDADE');
 
 /*Tabela Assessoria*/
-INSERT INTO tAssessoria
+INSERT INTO Assessoria
     VALUES(29210000625874, 'SERVICO');
 
-INSERT INTO tAssessoria
+INSERT INTO Assessoria
     VALUES(23172482000162, 'OPORTUNIDADE');
 
 /*Tabela Consulta
-    tConsulta(
+    Consulta(
     id NUMBER NOT NULL,
     Assessoria NUMBER NOT NULL,
     MoradorDeRua NUMBER NOT NULL,
     DataConsuta DATE NOT NULL,
     Categoria VARCHAR(30),
 */
-INSERT INTO tConsulta
+INSERT INTO Consulta
     VALUES(001, 29210000625874, 06955111458, TO_DATE('30/11/2021','dd/mm/yyyy'), 'SERVICO');
     
-INSERT INTO tConsulta
+INSERT INTO Consulta
     VALUES(002, 29210000625874, 03557111454, TO_DATE('15/07/2015','dd/mm/yyyy'), 'OPORTUNIDADE');
 
-INSERT INTO tConsulta
-    VALUES(003, 29210000625874, 01467587600, TO_DATE('30/11/2021','dd/mm/yyyy'), 'SERVICO');
+INSERT INTO Consulta
+    VALUES(003, 23172482000162, 01467587600, TO_DATE('30/11/2021','dd/mm/yyyy'), 'SERVICO');
     
-INSERT INTO tConsulta
-    VALUES(004, 29210000625874, 01467192700, TO_DATE('30/11/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
-
-
-/*Tabela Oportunidade
-    id NUMBER NOT NULL,
-    Privada NUMBER NOT NULL,
-    Assessoria NUMBER NOT NULL,
-    DataOP DATE NOT NULL,
-*/
-INSERT INTO tOportunidade
-    VALUES(002, 29283948625874, 23172482000162, TO_DATE('15/07/2015','dd/mm/yyyy'));
-    
-INSERT INTO tOportunidade
-    VALUES(004, 75716251241845, 23172482000162, TO_DATE('30/11/2021','dd/mm/yyyy'));
-
-/*Tabela Serviço
-    id NUMBER NOT NULL,
-    Privada NUMBER NOT NULL,
-    Assessoria NUMBER NOT NULL,
-    DataServ DATE NOT NULL,
-    NomeServ VARCHAR(40) NOT NULL,
-*/
-INSERT INTO tServico
-    VALUES(001, 74587521681254, 29210000625874, TO_DATE('30/11/2021','dd/mm/yyyy'), 'ESTETICA');
-    
-INSERT INTO tServico
-    VALUES(003, 05948237295069, 29210000625874, TO_DATE('30/11/2021','dd/mm/yyyy'), 'SAUDE');
+INSERT INTO Consulta
+    VALUES(004, 23172482000162, 01467192700, TO_DATE('30/11/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
 
 /*Tabela Atendimento
     id NUMBER NOT NULL,
@@ -209,30 +183,30 @@ INSERT INTO tServico
     MoradorDeRua NUMBER NOT NULL,
     DataAtendimento DATE NOT NULL,
 */
-INSERT INTO tAtendimento
-    VALUES(001, 74587521681254, 06955111458, TO_DATE('01/12/2021','dd/mm/yyyy'));
+INSERT INTO Atendimento
+    VALUES(001, 29283948625874, 06955111458, TO_DATE('01/12/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
 
-INSERT INTO tAtendimento
-    VALUES(002, 29283948625874, 03557111454, TO_DATE('01/07/2015','dd/mm/yyyy'));
+INSERT INTO Atendimento
+    VALUES(002, 29283948625874, 03557111454, TO_DATE('01/07/2020','dd/mm/yyyy'), 'OPORTUNIDADE');
 
-INSERT INTO tAtendimento
-    VALUES(003, 05948237295069, 01467587600, TO_DATE('01/12/2021','dd/mm/yyyy'));
+INSERT INTO Atendimento
+    VALUES(003, 05948237295069, 01467587600, TO_DATE('01/12/2021','dd/mm/yyyy'), 'SAUDE');
 
-INSERT INTO tAtendimento
-    VALUES(004, 75716251241845, 01467192700, TO_DATE('01/12/2021','dd/mm/yyyy'));
+INSERT INTO Atendimento
+    VALUES(004, 74587521681254, 03557111454, TO_DATE('01/07/2021','dd/mm/yyyy'), 'ESTETICA');
 
 /*Tabela Ponto de Coleta*/
-INSERT INTO tPontoDeColeta
+INSERT INTO PontoDeColeta
     VALUES(14785236995123, 'DE 08:00 A 18:00');
 
-INSERT INTO tPontoDeColeta
+INSERT INTO PontoDeColeta
     VALUES(98230679583729, 'DE 17:00 A 07:00');
 
 /*Tabela Estoque*/
-INSERT INTO tEstoque
+INSERT INTO Estoque
     VALUES(14785236995123, 1000);
 
-INSERT INTO tEstoque
+INSERT INTO Estoque
     VALUES(98230679583729, 1500);    
 
 /*Tabela Produto
@@ -242,82 +216,82 @@ INSERT INTO tEstoque
     NomedoFabricante VARCHAR(40) NOT NULL,
     Volume NUMBER,
     Validade DATE, """alterei de Idade para Validade"""*/
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(001, 14785236995123, 'MACARRAO', 'RENATA', 1, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(002, 98230679583729, 'MACARRAO', 'RENATA', 1, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(003, 14785236995123, 'MACARRAO', 'RENATA', 1, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(004, 98230679583729, 'MACARRAO', 'RENATA', 1, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(005, 14785236995123, 'SARDINHA', 'FISH', 1, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(006, 98230679583729, 'SARDINHA', 'FISH', 1, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(007, 14785236995123, 'SARDINHA', 'FISH', 1, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(008, 98230679583729, 'SARDINHA', 'FISH', 1, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(009, 14785236995123, 'ARROZ', 'SENINHA', 1, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(010, 98230679583729, 'ARROZ', 'SENINHA', 1, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(011, 14785236995123, 'ARROZ', 'SENINHA', 1, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(012, 98230679583729, 'ARROZ', 'SENINHA', 1, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(013, 14785236995123, 'ARROZ', 'SENINHA', 1, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(014, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(015, 14785236995123, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(016, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(017, 14785236995123, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(018, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(019, 98230679583729, 'BLUSA', 'HERING', 1, TO_DATE('31/12/2999','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(020, 14785236995123, 'BLUSA', 'POLO', 1, TO_DATE('31/12/2999','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(021, 98230679583729, 'BERMUDA', 'HERING', 1, TO_DATE('31/12/2999','dd/mm/yyyy'));
 
-INSERT INTO tProduto
-    VALUES(022, 14785236995123, 'VESTIDO', 'DOLCE & GABANA', 1, TO_DATE('31/12/2999','dd/mm/yyyy'));
+INSERT INTO Produto
+    VALUES(022, 14785236995123, 'VESTIDO', 'DOLCE GABANA', 1, TO_DATE('31/12/2999','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(023, 98230679583729, 'SABONETE', 'PROTEX', 1, TO_DATE('12/12/2024', 'dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(024, 98230679583729, 'SABONETE', 'DOVE', 1, TO_DATE('12/05/2024', 'dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(025, 14785236995123, 'CREME DENTAL', 'SORRISO', 1, TO_DATE('31/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tProduto
+INSERT INTO Produto
     VALUES(026, 14785236995123, 'HIDRATANTE', 'MONANGE', 1, TO_DATE('11/02/2023','dd/mm/yyyy'));
 
 /*Tabela Alimento
@@ -326,43 +300,43 @@ INSERT INTO tProduto
     TeorCalorico NUMBER,
     DataVencimento DATE,
 */    
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(001, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(003, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(003, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(004, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(005, 'S', 100, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(006, 'S', 100, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(007, 'S', 100, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(008, 'S', 100, TO_DATE('02/12/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(009, 'S', 90, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(010, 'S', 90, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(011, 'S', 90, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(012, 'S', 90, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
-INSERT INTO tAlimento
+INSERT INTO Alimento
     VALUES(013, 'S', 90, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
 /*Tabela Medicamento
@@ -371,19 +345,19 @@ INSERT INTO tAlimento
     Tipo VARCHAR(30),
     Lote VARCHAR(30),
 */
-INSERT INTO tMedicamento
+INSERT INTO Medicamento
     VALUES(014, TO_DATE('11/04/2023','dd/mm/yyyy'), 'ANALGESICO', 'S111');
 
-INSERT INTO tMedicamento
+INSERT INTO Medicamento
     VALUES(015, TO_DATE('11/04/2023','dd/mm/yyyy'), 'ANALGESICO', 'S111');
 
-INSERT INTO tMedicamento
+INSERT INTO Medicamento
     VALUES(016, TO_DATE('11/04/2023','dd/mm/yyyy'), 'ANALGESICO', 'S222');
 
-INSERT INTO tMedicamento
+INSERT INTO Medicamento
     VALUES(017, TO_DATE('11/04/2023','dd/mm/yyyy'), 'ANALGESICO', 'S222');
 
-INSERT INTO tMedicamento
+INSERT INTO Medicamento
     VALUES(018, TO_DATE('11/04/2023','dd/mm/yyyy'), 'ANALGESICO', 'S333');
 
 /*Tabela FornecimentoProduto
@@ -394,19 +368,19 @@ INSERT INTO tMedicamento
     Unidade VARCHAR(10),
     CONSTRAINT PK_FornecimentoProduto PRIMARY KEY (id),
     CONSTRAINT SK_FornecimentoProduto UNIQUE (Produto, MoradorDeRua, DataFornecimento),
-    CONSTRAINT FK_FornecimentoProduto1 FOREIGN KEY (Produto) REFERENCES tProduto(id),
-    CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES tMoradorDeRua(CPF)
+    CONSTRAINT FK_FornecimentoProduto1 FOREIGN KEY (Produto) REFERENCES Produto(id),
+    CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
 */
-INSERT INTO tFornecimentoProduto
+INSERT INTO FornecimentoProduto
     VALUES(01, 001, 06955111458, TO_DATE('29/11/2021', 'dd/mm/yyyy'), 'SACO');
 
-INSERT INTO tFornecimentoProduto
+INSERT INTO FornecimentoProduto
     VALUES(02, 004, 06955111458, TO_DATE('30/12/2021', 'dd/mm/yyyy'), 'SACO');
 
-INSERT INTO tFornecimentoProduto
+INSERT INTO FornecimentoProduto
     VALUES(03, 007, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
 
-INSERT INTO tFornecimentoProduto
+INSERT INTO FornecimentoProduto
     VALUES(04, 015, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
 
 /*Tabela DoaçãoProduto
@@ -415,10 +389,10 @@ INSERT INTO tFornecimentoProduto
     Doador NUMBER NOT NULL,
     DataDoacao DATE NOT NULL,
 */
-INSERT INTO tDoacaoProduto
+INSERT INTO DoacaoProduto
     VALUES(01, 003, 03256987412, TO_DATE('28/11/2021', 'dd/mm/yyyy'));
 
-INSERT INTO tDoacaoProduto
+INSERT INTO DoacaoProduto
     VALUES(02, 009, 47856321778, TO_DATE('28/11/2021', 'dd/mm/yyyy'));
 
 /*Tabela TipoPessoa
@@ -426,28 +400,28 @@ INSERT INTO tDoacaoProduto
     Nome VARCHAR(30) NOT NULL,
     Tipo VARCHAR(10) NOT NULL,
 */
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(03256987412, 'ERIKA', 'DOADOR');
 
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(47856321778, 'DANIEL', 'DOADOR');
 
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(06955111458, 'HENRIQUE', 'MORADOR DE RUA');
 
-INSERT INTO tTipoPessoa
-    VALUES(03256987412, 'LADY GAGA', 'MORADOR DE RUA');
+INSERT INTO TipoPessoa
+    VALUES(06955587600, 'LADY GAGA', 'MORADOR DE RUA');
 
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(03557111454, 'KEANU REEVES', 'MORADOR DE RUA');
 
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(01467587600, 'IVETE SANGALO', 'MORADOR DE RUA');
 
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(01467192700, 'JACK DORSEY', 'MORADOR DE RUA');
 
-INSERT INTO tTipoPessoa
+INSERT INTO TipoPessoa
     VALUES(45678932101, 'BILL GATES', 'DOADOR');
 
 /*Tabela Doador
@@ -458,13 +432,13 @@ INSERT INTO tTipoPessoa
     DataCadastro DATE,
     NumeroDoacoes NUMBER,
 */
-INSERT INTO tDoador
+INSERT INTO Doador
     VALUES(03256987412, 'ERIKA', TO_DATE('05/12/1997', 'dd/mm/yyyy'), 24, TO_DATE('29/11/2021', 'dd/mm/yyyy'), 1);
 
-INSERT INTO tDoador
+INSERT INTO Doador
     VALUES(47856321778, 'DANIEL', TO_DATE('25/07/2000', 'dd/mm/yyyy'),21, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 1);
 
-INSERT INTO tDoador
+INSERT INTO Doador
     VALUES(45678932101, 'BILL GATES', TO_DATE('28/04/1960', 'dd/mm/yyyy'),21, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 2);
 
 /*Tabela DoacaoFinanceira
@@ -475,179 +449,178 @@ INSERT INTO tDoador
     Montante NUMBER NOT NULL,
     FormaPagamento VARCHAR(10),
 */
-INSERT INTO tDoacaoFinanceira
+INSERT INTO DoacaoFinanceira
     VALUES(01, 14785236995123, 45678932101, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 500000, 'DINHEIRO');
 
-INSERT INTO tDoacaoFinanceira
+INSERT INTO DoacaoFinanceira
     VALUES(02, 98230679583729, 45678932101, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 500000, 'DINHEIRO');
 
 /*Tabela Vestuario*/
-INSERT INTO tVestuario
+INSERT INTO Vestuario
     VALUES(19,'G','ALGODAO');
 
-INSERT INTO tVestuario
+INSERT INTO Vestuario
     VALUES(20,'M','SEDA');
 
-INSERT INTO tVestuario
+INSERT INTO Vestuario
     VALUES(21,'GG','JEANS');
 
-INSERT INTO tVestuario
+INSERT INTO Vestuario
     VALUES(22,'P','SEDA');
 
 /*Tabela Higiene*/
-INSERT INTO tHigiene
+INSERT INTO Higiene
     VALUES(23,'ACIDO LATICO, BENZOATO DE SODIO, CLORETO DE SODIO');
 
-INSERT INTO tHigiene
+INSERT INTO Higiene
     VALUES(24,'ACIDO ESTEATICO, SEVATO DE SODIO, ACIDO LAURICO');
 
-INSERT INTO tHigiene
+INSERT INTO Higiene
     VALUES(25,'CARBONATO DE CALCIO, LAURIL SULFATO DE SODIO');
 
-INSERT INTO tHigiene
+INSERT INTO Higiene
     VALUES(26,'LANOLINA, GLICERINA, ALCOOL BENZILICO');
 
 /*Tabela Tipo Produto*/
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(001, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(002, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(003, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(004, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(005, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(006, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(007, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(008, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(009, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(010, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(011, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(012, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(013, 'ALIMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(014, 'MEDICAMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(015, 'MEDICAMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(016, 'MEDICAMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(017, 'MEDICAMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(018, 'MEDICAMENTO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(019, 'VESTUARIO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(020, 'VESTUARIO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(021, 'VESTUARIO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(022, 'VESTUARIO');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(023, 'HIGIENE');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(024, 'HIGIENE');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(025, 'HIGIENE');
 
-INSERT INTO tTipoProduto
+INSERT INTO TipoProduto
     VALUES(026, 'HIGIENE');
 
 /*Tabela Dormitorio*/
-INSERT INTO tDormitorio
+INSERT INTO Dormitorio
     VALUES(48512369745214,'QUARTO COLETIVO', 200, 180);
 
-INSERT INTO tDormitorio
+INSERT INTO Dormitorio
     VALUES(48512369745215,'QUARTO INDIVIDUAL', 100, 92);
 
-INSERT INTO tDormitorio
+INSERT INTO Dormitorio
     VALUES(48512369745216,'APARTAMENTO', 300, 190);
 
 /* Tabela Estadia*/
-INSERT INTO tEstadia  
+INSERT INTO Estadia  
     VALUES(001, 48512369745216, 06955587600, TO_DATE('01/05/2020', 'dd/mm/yyyy'), TO_DATE('01/05/2020', 'dd/mm/yyyy'));
 
-INSERT INTO tEstadia  
+INSERT INTO Estadia  
     VALUES(002, 48512369745215, 01467587600, TO_DATE('11/07/2020', 'dd/mm/yyyy'), TO_DATE('15/07/2020', 'dd/mm/yyyy'));
 
-INSERT INTO tEstadia  
+INSERT INTO Estadia  
     VALUES(003, 48512369745216, 03557111454, TO_DATE('05/09/2021', 'dd/mm/yyyy'), TO_DATE('05/10/2021', 'dd/mm/yyyy'));
 
-INSERT INTO tEstadia  
+INSERT INTO Estadia  
     VALUES(004, 48512369745214, 06955111458, TO_DATE('01/05/2019', 'dd/mm/yyyy'), TO_DATE('02/05/2019', 'dd/mm/yyyy'));
 
-INSERT INTO tEstadia  
+INSERT INTO Estadia  
     VALUES(005, 48512369745214, 06955587600, TO_DATE('13/01/2021', 'dd/mm/yyyy'), TO_DATE('01/03/2021', 'dd/mm/yyyy'));
 
-/*Tabela Oportunidade*/
-INSERT INTO tOportunidade
-    VALUES(001,29283948625874,23172482000162, TO_DATE('05/07/2021','dd/mm/yyyy'));
+/*Tabela Oportunidade
+    id NUMBER NOT NULL,
+    Privada NUMBER NOT NULL,
+    idConsulta NUMBER NOT NULL,
+    Assessoria NUMBER NOT NULL,
+    DataOP DATE NOT NULL,
+    NomeOportunidade VARCHAR(40) NOT NULL,
+    CONSTRAINT PK_Oportunidade PRIMARY KEY (id),
+    CONSTRAINT SK_Oportunidade UNIQUE (idConsulta),
+    CONSTRAINT FK_Oportunidade_1 FOREIGN KEY (Privada, NomeOportunidade) REFERENCES Privada(TipoEmpresa, Categoria) ON DELETE SET NULL,
+    CONSTRAINT FK_Oportunidade_2 FOREIGN KEY (Assessoria) REFERENCES Assessoria(TipoEmpresa) ON DELETE SET NULL,
+    CONSTRAINT FK_Oportunidade_3 FOREIGN KEY (idConsulta) REFERENCES Consulta(id) ON DELETE SET NULL
+*/
+INSERT INTO Oportunidade
+    VALUES(001, 75716251241845, 002, 29210000625874, TO_DATE('17/05/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
 
-INSERT INTO tOportunidade
-    VALUES(002,05948237295069,29210000625874, TO_DATE('02/03/2020','dd/mm/yyyy'));
-
-INSERT INTO tOportunidade
-    VALUES(003,74587521681254,23172482000162, TO_DATE('15/03/2020','dd/mm/yyyy'));
-
-INSERT INTO tOportunidade
-    VALUES(004,75716251241845,29210000625874, TO_DATE('15/07/2021','dd/mm/yyyy'));
-
-INSERT INTO tOportunidade
-    VALUES(005,29283948625874,29210000625874, TO_DATE('05/06/2021','dd/mm/yyyy'));
-
-INSERT INTO tOportunidade
-    VALUES(006,74575892361254,23172482000162, TO_DATE('05/08/2021','dd/mm/yyyy'));
-
-INSERT INTO tOportunidade
-    VALUES(007,75716251241845,29210000625874, TO_DATE('05/11/2020','dd/mm/yyyy'));
-
-INSERT INTO tOportunidade
-    VALUES(008,05948237295069,23172482000162, TO_DATE('15/10/2021','dd/mm/yyyy'));
+INSERT INTO Oportunidade
+    VALUES(002, 29283948625874, 004, 23172482000162, TO_DATE('22/11/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
 
 /*Tabela Serviço
     id NUMBER NOT NULL,
     Privada NUMBER NOT NULL,
+    idConsulta NUMBER NOT NULL,
     Assessoria NUMBER NOT NULL,
     DataServ DATE NOT NULL,
     NomeServ VARCHAR(40) NOT NULL,
     CONSTRAINT PK_Servico PRIMARY KEY (id),
     CONSTRAINT SK_Servico UNIQUE (Privada, Assessoria, DataServ, NomeServ),
-    CONSTRAINT FK_Servico_1 FOREIGN KEY (Privada) REFERENCES tPrivada(TipoEmpresa) ON DELETE SET NULL,
-    CONSTRAINT FK_Servico_2 FOREIGN KEY (Assessoria) REFERENCES tAssessoria(TipoEmpresa) ON DELETE SET NULL,
-    CONSTRAINT FK_Servico_3 FOREIGN KEY (NomeServ) REFERENCES tPrivada(Categoria) ON DELETE SET NULL
+    CONSTRAINT FK_Servico_1 FOREIGN KEY (Privada, NomeServ) REFERENCES Privada(TipoEmpresa, Categoria) ON DELETE SET NULL,
+    CONSTRAINT FK_Servico_2 FOREIGN KEY (Assessoria) REFERENCES Assessoria(TipoEmpresa) ON DELETE SET NULL,
+    CONSTRAINT FK_Servico_3 FOREIGN KEY (idConsulta) REFERENCES Consulta(id) ON DELETE SET NULL
 */
-INSERT INTO tServico
-    VALUES(001,);
+
+INSERT INTO Servico
+    VALUES(001, 05948237295069, 001, 29210000625874, TO_DATE('05/07/2021','dd/mm/yyyy'),'SAUDE');
+
+INSERT INTO Servico
+    VALUES(002, 74587521681254, 002, 23172482000162, TO_DATE('15/09/2021','dd/mm/yyyy'),'ESTETICA');
