@@ -50,8 +50,7 @@ FROM
     ON
     C.MoradorDeRua = M.CPF
 
-/*Sugestao de aplicar left/right join com moradores de rua , alergia (nem todos tem) e 
-medicamentos comprados (nem todos compraram)*/
+/*
 SELECT 
     D.Nome, 
     DF.Montante
@@ -61,30 +60,7 @@ LEFT JOIN
     DoacaoFinanceira DF
 ON
     D.CPF = DF.Doador;
-
-
-/*  Consultar os produtos fornecidos aos moradores de rua para checar se houve recebimento
-    de produtos que podem causar reação alérgica
 */
-SELECT 
-    MR.CPF, 
-    MR.Nome, 
-    A.Alergia, 
-    P.NomedoProduto
-FROM 
-    MoradorDeRua MR
-LEFT JOIN
-    Alergias A
-ON
-    MR.CPF = A.MoradorDeRua
-LEFT JOIN
-    FornecimentoProduto F
-ON
-    MR.CPF = F.MoradorDeRua
-LEFT JOIN
-    Produto P
-ON
-    F.Produto = P.id
 
 /*  Consultar os produtos fornecidos aos moradores de rua para checar se houve recebimento
     de itens que podem causar reação alérgica
@@ -166,5 +142,66 @@ SELECT
         Dias_Corridos DESC;
     
         
-    
+/*  Consultar todo o estoque de um ponto de coleta especifico 
+    [nesse caso 98230679583729 => 'SUPRIMENTOS SA']
+*/
+SELECT
+    I.CNPJ,
+    I.Nome, 
+    P.id AS COD_PRODUTO, 
+    P.NomedoProduto, 
+    P.Validade
+FROM
+    Estoque E
+JOIN
+    Instituicao I
+ON
+    E.PontoDeColeta = I.CNPJ
+JOIN
+    Produto P
+ON
+    P.Estoque = I.CNPJ
+WHERE
+    I.CNPJ = 98230679583729
+ORDER BY
+    P.NomedoProduto,
+    P.Validade
+
+/*  Consulta todos os pontos de coleta que tem um produto especifico
+    [Nesse caso contulamos todos os pontos de coleta que têm o medicamento Dipirona]
+*/
+SELECT
+    I.CNPJ,
+    I.Nome, 
+    P.id AS COD_PRODUTO, 
+    P.NomedoProduto, 
+    P.Validade,
+    I.Rua || ', ' || I.Numero || '. ' || I.Cidade || ', ' || I.UF AS Endereco
+FROM
+    Estoque E
+JOIN
+    Instituicao I
+ON
+    E.PontoDeColeta = I.CNPJ
+JOIN
+    Produto P
+ON
+    P.Estoque = I.CNPJ
+WHERE
+    P.NomedoProduto LIKE '%DIPIRONA%'
+ORDER BY
+    P.Validade
+
+
+
+/*divisao*/
+SELECT CPF, Nome FROM MoradorDeRua MR WHERE
+    NOT EXISTS ((SELECT Instituicao FROM Dormitorio)
+                MINUS
+                    (SELECT Dormitorio FROM Estadia WHERE MoradorDeRua = MR.CPF));
+
+
+
+
+
 

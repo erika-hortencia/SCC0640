@@ -315,19 +315,19 @@ INSERT INTO Produto
     VALUES(013, 14785236995123, 'ARROZ', 'SENINHA', 1, TO_DATE('15/05/2022','dd/mm/yyyy'));
 
 INSERT INTO Produto
-    VALUES(014, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
+    VALUES(014, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/02/2022','dd/mm/yyyy'));
 
 INSERT INTO Produto
-    VALUES(015, 14785236995123, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
+    VALUES(015, 14785236995123, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/12/2023','dd/mm/yyyy'));
 
 INSERT INTO Produto
-    VALUES(016, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
+    VALUES(016, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('10/08/2023','dd/mm/yyyy'));
 
 INSERT INTO Produto
-    VALUES(017, 14785236995123, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
+    VALUES(017, 14785236995123, 'DIPIRONA', 'GENERICO', 1, TO_DATE('19/05/2023','dd/mm/yyyy'));
 
 INSERT INTO Produto
-    VALUES(018, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('11/04/2023','dd/mm/yyyy'));
+    VALUES(018, 98230679583729, 'DIPIRONA', 'GENERICO', 1, TO_DATE('05/10/2023','dd/mm/yyyy'));
 
 INSERT INTO Produto
     VALUES(019, 98230679583729, 'BLUSA', 'HERING', 1, TO_DATE('31/12/2999','dd/mm/yyyy'));
@@ -686,6 +686,9 @@ INSERT INTO Estadia
 INSERT INTO Estadia  
     VALUES(005, 48512369745214, 06955587600, TO_DATE('13/01/2021', 'dd/mm/yyyy'), TO_DATE('01/03/2021', 'dd/mm/yyyy'));
 
+INSERT INTO Estadia  
+    VALUES(006, 48512369745215, 06955587600, TO_DATE('05/05/2020', 'dd/mm/yyyy'), TO_DATE('06/05/2020', 'dd/mm/yyyy'));
+    
 /*Tabela Oportunidade
     id NUMBER NOT NULL,
     Privada NUMBER NOT NULL,
@@ -724,3 +727,38 @@ INSERT INTO Servico
 
 INSERT INTO Servico
     VALUES(002, 74587521681254, 003, 23172482000162, TO_DATE('15/09/2021','dd/mm/yyyy'),'ESTETICA');
+
+/*Tabela FornecimentoProduto
+    id NUMBER NOT NULL,
+    Produto NUMBER NOT NULL,
+    MoradorDeRua NUMBER NOT NULL,
+    DataFornecimento DATE NOT NULL,
+    Unidade VARCHAR(10),
+    CONSTRAINT PK_FornecimentoProduto PRIMARY KEY (id),
+    CONSTRAINT SK_FornecimentoProduto UNIQUE (Produto, MoradorDeRua, DataFornecimento),
+    CONSTRAINT FK_FornecimentoProduto1 FOREIGN KEY (Produto) REFERENCES Produto(id),
+    CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
+*/
+INSERT INTO FornecimentoProduto
+    VALUES(01, 001, 06955111458, TO_DATE('29/11/2021', 'dd/mm/yyyy'), 'SACO');
+
+INSERT INTO FornecimentoProduto
+    VALUES(02, 004, 06955111458, TO_DATE('30/12/2021', 'dd/mm/yyyy'), 'SACO');
+
+INSERT INTO FornecimentoProduto
+    VALUES(03, 007, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
+
+INSERT INTO FornecimentoProduto
+    VALUES(04, 015, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
+
+INSERT INTO FornecimentoProduto
+    VALUES(05,25, 06955587600, TO_DATE('15/11/2021', 'dd/mm/yyyy'),'UND');
+
+INSERT INTO FornecimentoProduto
+    VALUES(06,26, 05749694038, TO_DATE('18/11/2021', 'dd/mm/yyyy'),'UND');
+
+INSERT INTO FornecimentoProduto
+    VALUES(07,23, 03557111454, TO_DATE('28/11/2020', 'dd/mm/yyyy'), 'UND');
+
+INSERT INTO FornecimentoProduto
+    VALUES(08,4, 01467587600, TO_DATE('28/03/2021', 'dd/mm/yyyy'),'UND');
