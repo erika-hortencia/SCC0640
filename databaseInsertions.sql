@@ -443,16 +443,16 @@ INSERT INTO FornecimentoProduto
     VALUES(04, 015, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
 
 INSERT INTO FornecimentoProduto
-    VALUES(03,23, 03557111454, TO_DATE('28/11/2020', 'dd/mm/yyyy'), 'UND');
-
-INSERT INTO FornecimentoProduto
-    VALUES(04,4, 01467587600, TO_DATE('28/03/2021', 'dd/mm/yyyy'),'UND');
-
-INSERT INTO FornecimentoProduto
     VALUES(05,25, 06955587600, TO_DATE('15/11/2021', 'dd/mm/yyyy'),'UND');
 
 INSERT INTO FornecimentoProduto
     VALUES(06,26, 05749694038, TO_DATE('18/11/2021', 'dd/mm/yyyy'),'UND');
+
+INSERT INTO FornecimentoProduto
+    VALUES(07,23, 03557111454, TO_DATE('28/11/2020', 'dd/mm/yyyy'), 'UND');
+
+INSERT INTO FornecimentoProduto
+    VALUES(08,4, 01467587600, TO_DATE('28/03/2021', 'dd/mm/yyyy'),'UND');
 
 /*Tabela DoaçãoProduto
     id NUMBER NOT NULL,
