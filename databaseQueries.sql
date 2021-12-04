@@ -20,8 +20,9 @@ ORDER BY
     e idosos (nascidos antes de 1961)
 */
 SELECT 
+    CPF,
     Nome, 
-    CPF
+    TRUNC((sysdate - DataNascimento)/365) AS Idade
 FROM 
     MoradorDeRua
 WHERE 
@@ -52,7 +53,8 @@ FROM
 /*Sugestao de aplicar left/right join com moradores de rua , alergia (nem todos tem) e 
 medicamentos comprados (nem todos compraram)*/
 SELECT 
-    D.Nome, DF.Montante
+    D.Nome, 
+    DF.Montante
 FROM    
     Doador D
 LEFT JOIN
@@ -65,7 +67,10 @@ ON
     de produtos que podem causar reação alérgica
 */
 SELECT 
-    MR.CPF, MR.Nome, A.Alergia, P.NomedoProduto
+    MR.CPF, 
+    MR.Nome, 
+    A.Alergia, 
+    P.NomedoProduto
 FROM 
     MoradorDeRua MR
 LEFT JOIN
@@ -117,9 +122,18 @@ SELECT Doador, Instituicao, SUM(Montante) as ValorTotal
     ORDER BY Doador;
 
 /*Atendimento x Consulta - Data (Oportunidade)*/
-SELECT Aten.MoradorDeRua, Aten.DataAtendimento as AtenData, Con.DataConsuta as ConData
-    FROM 
+SELECT 
+    Aten.MoradorDeRua as CPF,
+    M.Nome, 
+    Aten.DataAtendimento as AtenData, 
+    Con.DataConsuta as ConData,
+    TRUNC(Aten.DataAtendimento - Con.DataConsuta) AS Dias_Corridos
+    FROM
+        MoradorDeRua M
+    JOIN
         Atendimento Aten
+    ON
+        M.CPF = Aten.MoradorDeRua
     JOIN    
         Consulta Con
     ON
@@ -129,13 +143,28 @@ SELECT Aten.MoradorDeRua, Aten.DataAtendimento as AtenData, Con.DataConsuta as C
 
 
 /*Atendimento x Consulta - Data (Servico)*/
-SELECT Aten.MoradorDeRua, Aten.DataAtendimento as AtenData, Con.DataConsuta as ConData, Aten.NomeAtendimento
-    FROM 
+SELECT 
+    Aten.MoradorDeRua as CPF,
+    M.Nome,
+    Aten.DataAtendimento as Data_Atendimento, 
+    Con.DataConsuta as Data_Consulta, 
+    Aten.NomeAtendimento as Nome_Atendimento,
+    TRUNC(Aten.DataAtendimento - Con.DataConsuta) AS Dias_Corridos
+    FROM
+        MoradorDeRua M
+    JOIN
         Atendimento Aten
+    ON
+        M.CPF = Aten.MoradorDeRua 
     JOIN    
         Consulta Con
     ON
         Aten.MoradorDeRua = Con.MoradorDeRua
     WHERE
-        Aten.NomeAtendimento <> 'OPORTUNIDADE';
+        Aten.NomeAtendimento <> 'OPORTUNIDADE'
+    ORDER BY 
+        Dias_Corridos DESC;
+    
+        
+    
 

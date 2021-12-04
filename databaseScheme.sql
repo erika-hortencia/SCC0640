@@ -162,7 +162,8 @@ CREATE TABLE DoacaoProduto(
     DataDoacao DATE NOT NULL,
     CONSTRAINT PK_DoacaoProduto PRIMARY KEY (id),
     CONSTRAINT SK_DoacaoProduto UNIQUE (Produto, Doador, DataDoacao),
-    CONSTRAINT FK_DoacaoProduto FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL
+    CONSTRAINT FK_DoacaoProduto_1 FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL,
+    CONSTRAINT FK_DoacaoProduto_2 FOREIGN KEY (Doador) REFERENCES Doador(CPF) ON DELETE SET NULL
 );
 
 CREATE TABLE Doador(
