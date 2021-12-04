@@ -1,3 +1,10 @@
+CREATE TABLE TipoPessoa(
+    CPF NUMBER NOT NULL,
+    Nome VARCHAR(30) NOT NULL,
+    Tipo VARCHAR(20) NOT NULL,
+    CONSTRAINT PK_TipoPessoa PRIMARY KEY (CPF)
+);
+
 CREATE TABLE MoradorDeRua(
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
@@ -5,10 +12,9 @@ CREATE TABLE MoradorDeRua(
     DataCadastro DATE,
     Genero CHAR(1),
     Escoladriade VARCHAR(25),
-    CONSTRAINT PK_MoradorDeRua PRIMARY KEY (CPF)
+    CONSTRAINT PK_MoradorDeRua PRIMARY KEY (CPF),
+    CONSTRAINT FK_MoradorDeRua_1 FOREIGN KEY (CPF) REFERENCES TipoPessoa(CPF) ON DELETE SET NULL
 );
-
-
 
 CREATE TABLE Alergias(
     MoradorDeRua NUMBER NOT NULL,
@@ -88,7 +94,8 @@ CREATE TABLE Consulta(
     CONSTRAINT PK_Consulta PRIMARY KEY (id),
     CONSTRAINT SK_Consulta UNIQUE (Assessoria, MoradorDeRua, DataConsuta, Categoria),
     CONSTRAINT FK_Consulta1 FOREIGN KEY (Categoria) REFERENCES Assessoria(Categoria) ON DELETE SET NULL,
-    CONSTRAINT FK_Consulta2 FOREIGN KEY (Assessoria) REFERENCES Assessoria(TipoEmpresa) ON DELETE SET NULL
+    CONSTRAINT FK_Consulta2 FOREIGN KEY (Assessoria) REFERENCES Assessoria(TipoEmpresa) ON DELETE SET NULL,
+    CONSTRAINT FK_Consulta3 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
 );
 
 CREATE TABLE PontoDeColeta(
@@ -148,8 +155,6 @@ CREATE TABLE FornecimentoProduto(
     CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
 );
 
-
-
 CREATE TABLE DoacaoProduto(
     id NUMBER NOT NULL,
     Produto NUMBER NOT NULL,
@@ -160,13 +165,6 @@ CREATE TABLE DoacaoProduto(
     CONSTRAINT FK_DoacaoProduto FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL
 );
 
-CREATE TABLE TipoPessoa(
-    CPF NUMBER NOT NULL,
-    Nome VARCHAR(30) NOT NULL,
-    Tipo VARCHAR(20) NOT NULL,
-    CONSTRAINT PK_TipoPessoa PRIMARY KEY (CPF)
-);
-
 CREATE TABLE Doador(
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
@@ -175,7 +173,7 @@ CREATE TABLE Doador(
     DataCadastro DATE,
     NumeroDoacoes NUMBER,
     CONSTRAINT PK_Doador PRIMARY KEY (CPF),
-    CONSTRAINT FK_Doador FOREIGN KEY (CPF) REFERENCES TipoPessoa(CPF) ON DELETE SET NULL
+    CONSTRAINT FK_Doador_1 FOREIGN KEY (CPF) REFERENCES TipoPessoa(CPF) ON DELETE SET NULL
 );
 
 CREATE TABLE DoacaoFinanceira(
