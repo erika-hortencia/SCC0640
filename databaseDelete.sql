@@ -1,12 +1,3 @@
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
-drop table cascade constraints;
 drop table TipoPessoa cascade constraints;
 drop table MoradorDeRua cascade constraints;
 drop table Alergias cascade constraints;
