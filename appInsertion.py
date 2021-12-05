@@ -1,5 +1,6 @@
 from tkinter import *
-import string
+import sqlConnection
+import gui
 
 def insertion():
 
