@@ -1,5 +1,5 @@
 # SCC0640
-Conclusão do projeto desenvolvido para a disciplina **__SCC0640 - Bases de Dados__**, ministrada pelo **__Instituto de Ciências Matemáticas e de Computação__** durante o segundo semestre de 2021. O intuito principal era projetar o banco de dados para o sistema e também desenvolver uma aplicação que fosse capaz de interagir com o mesmo.
+Conclusão do projeto desenvolvido para a disciplina **__SCC0640 - Bases de Dados__**, ministrada pelo **__Instituto de Ciências Matemáticas e de Computação (ICMC)__** da *__Universidade de São Paulo (USP)__* durante o segundo semestre de 2021. O intuito principal era projetar o banco de dados para o sistema e também desenvolver uma aplicação que fosse capaz de interagir com o mesmo.
 
 Trata-se de um sistema desenvolvido para facilitar o monitoramento e atendimento das demandas de moradores de rua (algumas liberdades foram tomadas ao decorrer do projeto, de forma que o resultado final não necessariamente reflete de forma fidedigna a realidade brasileira).
 
