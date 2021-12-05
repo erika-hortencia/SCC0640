@@ -1,8 +1,8 @@
 import cx_Oracle
 import sqlConnection
-#from appInsertion import insertion
 from tkinter import *
 import pandas as pd
+from tkinter import ttk
 
 connection = sqlConnection.connect()
 
@@ -13,6 +13,7 @@ def insertion():
         getData()
 
     def getData():
+        #Recebe dos campos de entraga os atributos a serem inseridos
         estoque = entryField_Estoque.get()
         nomeDoProduto = entryField_NomedoProduto.get()
         nomeDoFabricante = entryField_NomedoFabricante.get()
@@ -21,6 +22,7 @@ def insertion():
 
         """
         Calculando em aplicação o ID do produto
+            Encontra qual o maior id no banco e cria o novo id como new_id = MAX(id)+1
         """
         auxmax_id = """ SELECT MAX(id) FROM Produto """
         df = pd.read_sql(auxmax_id, connection)
@@ -38,11 +40,15 @@ def insertion():
             cur.execute(sql_insert_command)
             connection.commit()
         except Exception as errormessage:
-                print('Erro ao inserir os dados ', errormessage)
+            #Exibição da mensagem de erro
+            result_text['text'] = 'Erro ao inserir os dados ' , errormessage
         else:
-            print('Dados inseridos com sucesso!')
+            #Exibição da mensagem de sucesso
+            result_text['text'] = 'Dados inseridos com sucesso!'
 
         return sql_insert_command
+    
+    selectedOptionText['text'] ='Inserindo'
 
     """
     Criando a janela de inserção
@@ -52,6 +58,9 @@ def insertion():
     insertWindow.geometry('650x500')
     insertion_text = Label(insertWindow, text='Informe os dados', font=('Helvetica', 14))
     insertion_text.place(relx=0.5, rely=0.1, anchor=CENTER)
+
+    result_text = Label(insertWindow, text=" ", font=('Helvetica', 10))
+    result_text.place(relx=0.5, rely=1.0-0.15, anchor=CENTER)
 
     """
     Campos para inserção dos dados (INSERT)
@@ -95,12 +104,37 @@ def query():
 
     def getFromSQL():
 
-        getProduct()
+        """
+        Criando a janela de resultados
+        """
+        resultWindow = Tk()
+        resultWindow.title('Estoque disponível em')
+        resultWindow.geometry('1550x300')
+
+        #Preparando a visualização dos dados
+        productFrame = Frame(resultWindow)
+        productFrame.pack(pady=20)
+
+        #Criando a visualização dos dados no app
+        productTree = ttk.Treeview(productFrame)
+
+        df = getProduct()
+
+        productTree["column"] = list(df.columns)
+        productTree["show"] = "headings"
+        for column in productTree["column"]:
+            productTree.heading(column, text=column)
+        data_rows = df.to_numpy().tolist()
+        for row in data_rows:
+            productTree.insert("","end", values=row)
+        productTree.pack()
         
     def getProduct():
+            #Recebe o nome do produto a ser pesquisado inserido no campo de entrada
             produto = query_Produto.get()
 
-            sql_query_command = f""" SELECT I.CNPJ, I.Nome, P.id AS COD_PRODUTO, 
+            #Comando de busca
+            sql_query_command = f""" SELECT I.CNPJ, I.Nome, P.id AS ID, 
              P.NomedoProduto, P.Validade, I.Rua || ', ' || I.Numero || '. ' || I.Cidade || ', ' ||
               I.UF AS Endereco FROM Estoque E JOIN Instituicao I ON E.PontoDeColeta = I.CNPJ 
               JOIN Produto P ON P.Estoque = I.CNPJ WHERE P.NomedoProduto LIKE '%{produto}%' ORDER BY P.Validade"""
@@ -110,26 +144,30 @@ def query():
                 cur = connection.cursor()
                 productQuery = pd.read_sql(sql_query_command, connection)
                 cur.execute(sql_query_command)
-                print(productQuery)
                 connection.commit()
             except Exception as err:
-                print('Erro ao buscar produto ', err)
+                #Exibição da mensagem de erro
+                result_text['text'] = 'Erro ao buscar produto ', err
             else:
-                print('Dados da consulta acima!')
+                #Exibição da mensagem de sucesso
+                result_text['text'] = 'Consulta realiza com sucesso, confira os resultados!'
+            
+            return productQuery
 
-            return sql_query_command
-
-    #print('Searching')
-    selectedOptionText['text'] ='Searching'
+    selectedOptionText['text'] ='Pesquisando'
 
     """
     Criando a janela de consulta
     """
     queryWindow = Tk()
     queryWindow.title('Consulta de Produto')
-    queryWindow.geometry('650x500')
+    queryWindow.geometry('400x200')
     query_text = Label(queryWindow, text='Informe o produto a pesquisar', font=('Helvetica', 14))
     query_text.place(relx=0.5, rely=0.1, anchor=CENTER)
+
+    result_text = Label(queryWindow, text=" ", font=('Helvetica', 10))
+    result_text.place(relx=0.5, rely=1-0.3, anchor=CENTER)
+
 
     """
     Campo para inserção dos dados (CONSULTA)
@@ -137,20 +175,18 @@ def query():
     #CPF do ponto de coleta onde o produto está localizado
     queryLabel = Label(queryWindow, text='Produto')
     query_Produto = Entry(queryWindow, bg='yellow', borderwidth=5)
-    queryLabel.place(relx=0.55, rely=0.2, anchor=CENTER)
-    query_Produto.place(relx=0.85, rely=0.2, anchor=CENTER)
+    queryLabel.place(relx=0.1, rely=1-0.6, anchor=CENTER)
+    query_Produto.place(relx=0.40, rely=1-0.6, anchor=CENTER)
 
     queryButton = Button(queryWindow, text='Buscar', command=getFromSQL)
     queryButton.place(relx=0.5, rely=1.0-0.1, anchor=CENTER)
 
-def deletion():
-    #print('Deleting')
-    selectedOptionText['text'] ='Deleting'
-
-
+"""
+Criando a janela inicial da aplicação
+"""
 homeWindow = Tk()
 homeWindow.title('Monitoramento Moradores de Rua')
-homeWindow.geometry('250x470')
+homeWindow.geometry('250x350')
 
 options_text = Label(homeWindow, text='Clique na operação que deseja realizar')
 options_text.grid(column=0, row=0, padx= 20, pady= 15)
@@ -159,11 +195,9 @@ insertButton = Button(homeWindow, text='Inserir Produto', command=insertion)
 insertButton.grid(column=0, row=1, padx= 60, pady= 45)
 searchButton = Button(homeWindow, text='Pesquisar Produto', command=query)
 searchButton.grid(column=0, row=2, padx= 60, pady= 45)
-deleteButton = Button(homeWindow, text='Deletar Produto', command=deletion)
-deleteButton.grid(column=0, row=3, padx= 60, pady= 45)
 
 selectedOptionText = Label(homeWindow, text=" ")
-selectedOptionText.grid(column=0, row=4, padx= 60, pady= 45)
+selectedOptionText.grid(column=0, row=3, padx= 60, pady= 45)
 
 homeWindow.mainloop()
 
