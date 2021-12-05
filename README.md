@@ -61,7 +61,7 @@ Foram implementadas as seguintes funções:
 
 - **__Busca de produto__**: essa função permite buscar um produto por **__nome__**
 
-![Tela de inserção](./image/insertWindow.PNG)
+![Tela de inserção](./image/queryWindow.PNG)
 
 E tem como retorno a lista de todos os pontos de coleta que possuem estoque desse item disponível, ordenados pela data de validade:
 ![Tela de inserção](./image/resultWindow.PNG)
