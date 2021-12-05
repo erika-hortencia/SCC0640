@@ -62,7 +62,7 @@ INSERT INTO MoradorDeRua
     VALUES(01467192700, 'JACK DORSEY', TO_DATE('12/07/1976','dd/mm/yyyy'), TO_DATE('01/12/2001','dd/mm/yyyy'), 'M', 'MEDIO COMPLETO');
 
 INSERT INTO MoradorDeRua
-    VALUES(05749694038, 'JOAQUIN PHOENIX', TO_DATE('12/07/1952','dd/mm/yyyy'), TO_DATE('11/08/2021','dd/mm/yyyy')'M', 'MEDIO COMPLETO');
+    VALUES(05749694038, 'JOAQUIN PHOENIX', TO_DATE('12/07/1952','dd/mm/yyyy'), TO_DATE('11/08/2021','dd/mm/yyyy'),'M', 'MEDIO COMPLETO');
 
 INSERT INTO MoradorDeRua
     VALUES(76851659026, 'LEONARDO DA VINCI', TO_DATE('12/11/1950','dd/mm/yyyy'),TO_DATE('15/06/2013','dd/mm/yyyy'), 'M', 'SUPERIOR COMPLETO');
@@ -134,6 +134,9 @@ INSERT INTO Instituicao
 INSERT INTO Instituicao
     VALUES(23172482000162, 'KPJ ASSESSORIA', 13010080, 'SP', 'CAMPINAS', 'AV CAMPOS SALES', 480);
 
+INSERT INTO Instituicao
+    VALUES(44343495000127, 'BBC TREINAMENTOS', 13087732, 'SP', 'CAMPINAS', 'AV RICARDO ROCHA BOMFIM', 1180);
+
 /*Tabela TipoInstituicao*/
 INSERT INTO TipoInstituicao
     VALUES(29283948625874, 'EMPRESA');
@@ -171,6 +174,9 @@ INSERT INTO TipoInstituicao
 INSERT INTO TipoInstituicao
     VALUES(23172482000162, 'EMPRESA');
 
+INSERT INTO TipoInstituicao
+    VALUES(44343495000127, 'EMPRESA');
+
  /*Tabela TipoEmpresa*/
 INSERT INTO TipoEmpresa
     VALUES(29283948625874, 'PRIVADA');
@@ -193,6 +199,9 @@ INSERT INTO TipoEmpresa
 INSERT INTO TipoEmpresa
     VALUES(23172482000162, 'ASSESSORIA');
 
+INSERT INTO TipoEmpresa
+    VALUES(44343495000127, 'PRIVADA');
+
 /*Tabela Privada*/
 INSERT INTO Privada
     VALUES(29283948625874, 'OPORTUNIDADE');
@@ -208,6 +217,9 @@ INSERT INTO Privada
 
 INSERT INTO Privada
     VALUES(74575892361254, 'OPORTUNIDADE');
+
+INSERT INTO Privada
+    VALUES(44343495000127, 'EDUCACAO');
 
 /*Tabela Assessoria*/
 INSERT INTO Assessoria
@@ -231,28 +243,34 @@ INSERT INTO Consulta
     VALUES(002, 29210000625874, 03557111454, TO_DATE('15/07/2015','dd/mm/yyyy'), 'OPORTUNIDADE');
 
 INSERT INTO Consulta
-    VALUES(003, 23172482000162, 01467587600, TO_DATE('30/11/2021','dd/mm/yyyy'), 'SERVICO');
+    VALUES(003, 23172482000162, 01467587600, TO_DATE('30/01/2021','dd/mm/yyyy'), 'SERVICO');
     
 INSERT INTO Consulta
     VALUES(004, 23172482000162, 01467192700, TO_DATE('30/11/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
 
+INSERT INTO Consulta
+    VALUES(005, 29210000625874, 01467192700, TO_DATE('10/01/2021','dd/mm/yyyy'), 'SERVICO');
+
 /*Tabela Atendimento
     id NUMBER NOT NULL,
     Privada NUMBER NOT NULL,
+    idConsulta NUMBER NOT NULL,
     MoradorDeRua NUMBER NOT NULL,
     DataAtendimento DATE NOT NULL,
+    CONSTRAINT PK_Atendimento PRIMARY KEY (id),
+    CONSTRAINT SK_Atendimento UNIQUE (Privada, MoradorDeRua, DataAtendimento),
+    CONSTRAINT FK_Atendimento1 FOREIGN KEY (Privada,NomeAtendimento) REFERENCES Privada(TipoEmpresa, Categoria) ON DELETE SET NULL,
+    CONSTRAINT FK_Atendimento2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF) ON DELETE SET NULL
+    CONSTRAINT FK_Atendimento_3 FOREIGN KEY (idConsulta) REFERENCES Consulta(id) ON DELETE SET NULL
 */
 INSERT INTO Atendimento
-    VALUES(001, 29283948625874, 06955111458, TO_DATE('01/12/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
+    VALUES(001, 05948237295069, 001, 06955111458, TO_DATE('01/12/2021','dd/mm/yyyy'), 'SAUDE');
 
 INSERT INTO Atendimento
-    VALUES(002, 29283948625874, 03557111454, TO_DATE('01/07/2020','dd/mm/yyyy'), 'OPORTUNIDADE');
+    VALUES(002, 74587521681254, 003, 01467587600, TO_DATE('01/07/2021','dd/mm/yyyy'), 'ESTETICA');
 
 INSERT INTO Atendimento
-    VALUES(003, 05948237295069, 01467587600, TO_DATE('01/12/2021','dd/mm/yyyy'), 'SAUDE');
-
-INSERT INTO Atendimento
-    VALUES(004, 74587521681254, 03557111454, TO_DATE('01/07/2021','dd/mm/yyyy'), 'ESTETICA');
+    VALUES(003, 44343495000127, 005, 01467192700, TO_DATE('01/07/2021','dd/mm/yyyy'), 'EDUCACAO');
 
 /*Tabela Ponto de Coleta*/
 INSERT INTO PontoDeColeta
@@ -419,53 +437,6 @@ INSERT INTO Medicamento
 INSERT INTO Medicamento
     VALUES(018, TO_DATE('11/04/2023','dd/mm/yyyy'), 'ANALGESICO', 'S333');
 
-/*Tabela FornecimentoProduto
-    id NUMBER NOT NULL,
-    Produto NUMBER NOT NULL,
-    MoradorDeRua NUMBER NOT NULL,
-    DataFornecimento DATE NOT NULL,
-    Unidade VARCHAR(10),
-    CONSTRAINT PK_FornecimentoProduto PRIMARY KEY (id),
-    CONSTRAINT SK_FornecimentoProduto UNIQUE (Produto, MoradorDeRua, DataFornecimento),
-    CONSTRAINT FK_FornecimentoProduto1 FOREIGN KEY (Produto) REFERENCES Produto(id),
-    CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
-*/
-INSERT INTO FornecimentoProduto
-    VALUES(01, 001, 06955111458, TO_DATE('29/11/2021', 'dd/mm/yyyy'), 'SACO');
-
-INSERT INTO FornecimentoProduto
-    VALUES(02, 004, 06955111458, TO_DATE('30/12/2021', 'dd/mm/yyyy'), 'SACO');
-
-INSERT INTO FornecimentoProduto
-    VALUES(03, 007, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
-
-INSERT INTO FornecimentoProduto
-    VALUES(04, 015, 06955111458, TO_DATE('01/12/2021', 'dd/mm/yyyy'), 'SACO');
-
-INSERT INTO FornecimentoProduto
-    VALUES(05,25, 06955587600, TO_DATE('15/11/2021', 'dd/mm/yyyy'),'UND');
-
-INSERT INTO FornecimentoProduto
-    VALUES(06,26, 05749694038, TO_DATE('18/11/2021', 'dd/mm/yyyy'),'UND');
-
-INSERT INTO FornecimentoProduto
-    VALUES(07,23, 03557111454, TO_DATE('28/11/2020', 'dd/mm/yyyy'), 'UND');
-
-INSERT INTO FornecimentoProduto
-    VALUES(08,4, 01467587600, TO_DATE('28/03/2021', 'dd/mm/yyyy'),'UND');
-
-/*Tabela DoaçãoProduto
-    id NUMBER NOT NULL,
-    Produto NUMBER NOT NULL,
-    Doador NUMBER NOT NULL,
-    DataDoacao DATE NOT NULL,
-*/
-INSERT INTO DoacaoProduto
-    VALUES(01, 003, 03256987412, TO_DATE('28/11/2021', 'dd/mm/yyyy'));
-
-INSERT INTO DoacaoProduto
-    VALUES(02, 009, 47856321778, TO_DATE('28/11/2021', 'dd/mm/yyyy'));
-
 /*Tabela Doador
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
@@ -554,6 +525,17 @@ INSERT INTO DoacaoFinanceira
 INSERT INTO DoacaoFinanceira
     VALUES(18, 29210000625874, 02578412033, TO_DATE('03/12/2021', 'dd/mm/yyyy'), 100000, 'DINHEIRO');
 
+/*Tabela DoaçãoProduto
+    id NUMBER NOT NULL,
+    Produto NUMBER NOT NULL,
+    Doador NUMBER NOT NULL,
+    DataDoacao DATE NOT NULL,
+*/
+INSERT INTO DoacaoProduto
+    VALUES(01, 003, 03256987412, TO_DATE('28/11/2021', 'dd/mm/yyyy'));
+
+INSERT INTO DoacaoProduto
+    VALUES(02, 009, 47856321778, TO_DATE('28/11/2021', 'dd/mm/yyyy'));
 
 /*Tabela Vestuario*/
 INSERT INTO Vestuario

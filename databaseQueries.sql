@@ -26,11 +26,11 @@ SELECT
 FROM 
     MoradorDeRua
 WHERE 
-    EXTRACT(YEAR FROM DataNascimento)>= 2003 
+    TRUNC((sysdate - DataNascimento)/365)>= 60 
     OR  
-    EXTRACT(YEAR FROM DataNascimento)<= 1961
+    TRUNC((sysdate - DataNascimento)/365)<= 18
 ORDER BY 
-    EXTRACT(YEAR FROM DataNascimento); 
+    Idade DESC; 
 
 /*  Consultar oportunidades oferecidas aos moradores de rua x nivel de escolaridade 
     dos moradores de rua [Inner Join]

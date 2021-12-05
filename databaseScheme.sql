@@ -70,21 +70,6 @@ CREATE TABLE Privada(
     CONSTRAINT FK_Privada1 FOREIGN KEY (TipoEmpresa) REFERENCES TipoEmpresa(CNPJ) ON DELETE SET NULL
 );
 
-
-CREATE TABLE Atendimento(
-    id NUMBER NOT NULL,
-    Privada NUMBER NOT NULL,
-    MoradorDeRua NUMBER NOT NULL,
-    DataAtendimento DATE NOT NULL,
-    NomeAtendimento VARCHAR(40) NOT NULL,
-    CONSTRAINT PK_Atendimento PRIMARY KEY (id),
-    CONSTRAINT SK_Atendimento UNIQUE (Privada, MoradorDeRua, DataAtendimento),
-    CONSTRAINT FK_Atendimento1 FOREIGN KEY (Privada,NomeAtendimento) REFERENCES Privada(TipoEmpresa, Categoria) ON DELETE SET NULL,
-    CONSTRAINT FK_Atendimento2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF) ON DELETE SET NULL
-);
-
-
-
 CREATE TABLE Consulta(
     id NUMBER NOT NULL,
     Assessoria NUMBER NOT NULL,
@@ -96,6 +81,20 @@ CREATE TABLE Consulta(
     CONSTRAINT FK_Consulta1 FOREIGN KEY (Categoria) REFERENCES Assessoria(Categoria) ON DELETE SET NULL,
     CONSTRAINT FK_Consulta2 FOREIGN KEY (Assessoria) REFERENCES Assessoria(TipoEmpresa) ON DELETE SET NULL,
     CONSTRAINT FK_Consulta3 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
+);
+
+CREATE TABLE Atendimento(
+    id NUMBER NOT NULL,
+    Privada NUMBER NOT NULL,
+    idConsulta NUMBER NOT NULL,
+    MoradorDeRua NUMBER NOT NULL,
+    DataAtendimento DATE NOT NULL,
+    NomeAtendimento VARCHAR(40) NOT NULL,
+    CONSTRAINT PK_Atendimento PRIMARY KEY (id),
+    CONSTRAINT SK_Atendimento UNIQUE (Privada, MoradorDeRua, DataAtendimento),
+    CONSTRAINT FK_Atendimento1 FOREIGN KEY (Privada,NomeAtendimento) REFERENCES Privada(TipoEmpresa, Categoria) ON DELETE SET NULL,
+    CONSTRAINT FK_Atendimento2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF) ON DELETE SET NULL,
+    CONSTRAINT FK_Atendimento_3 FOREIGN KEY (idConsulta) REFERENCES Consulta(id) ON DELETE SET NULL
 );
 
 CREATE TABLE PontoDeColeta(
@@ -155,17 +154,6 @@ CREATE TABLE FornecimentoProduto(
     CONSTRAINT FK_FornecimentoProduto2 FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF)
 );
 
-CREATE TABLE DoacaoProduto(
-    id NUMBER NOT NULL,
-    Produto NUMBER NOT NULL,
-    Doador NUMBER NOT NULL,
-    DataDoacao DATE NOT NULL,
-    CONSTRAINT PK_DoacaoProduto PRIMARY KEY (id),
-    CONSTRAINT SK_DoacaoProduto UNIQUE (Produto, Doador, DataDoacao),
-    CONSTRAINT FK_DoacaoProduto_1 FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL,
-    CONSTRAINT FK_DoacaoProduto_2 FOREIGN KEY (Doador) REFERENCES Doador(CPF) ON DELETE SET NULL
-);
-
 CREATE TABLE Doador(
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
@@ -188,6 +176,17 @@ CREATE TABLE DoacaoFinanceira(
     CONSTRAINT SK_DoacaoFinanceira UNIQUE (Instituicao, Doador, DataDoacao),
     CONSTRAINT FK_DoacaoFinanceira1 FOREIGN KEY (Instituicao) REFERENCES Instituicao(CNPJ) ON DELETE SET NULL,
     CONSTRAINT FK_DoacaoFinanceira2 FOREIGN KEY (Doador) REFERENCES Doador(CPF) ON DELETE SET NULL
+);
+
+CREATE TABLE DoacaoProduto(
+    id NUMBER NOT NULL,
+    Produto NUMBER NOT NULL,
+    Doador NUMBER NOT NULL,
+    DataDoacao DATE NOT NULL,
+    CONSTRAINT PK_DoacaoProduto PRIMARY KEY (id),
+    CONSTRAINT SK_DoacaoProduto UNIQUE (Produto, Doador, DataDoacao),
+    CONSTRAINT FK_DoacaoProduto_1 FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL,
+    CONSTRAINT FK_DoacaoProduto_2 FOREIGN KEY (Doador) REFERENCES Doador(CPF) ON DELETE SET NULL
 );
 
 CREATE TABLE Vestuario(

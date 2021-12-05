@@ -33,7 +33,8 @@ def insertion():
         """
         Inserindo o produto no banco
         """
-        sql_insert_command = f""" INSERT INTO Produto(id, Estoque, NomedoProduto, NomedoFabricante, Volume, Validade) VALUES ({max_id},{estoque},'{nomeDoProduto}','{nomeDoFabricante}',{volume}, TO_DATE('{validade}','dd/mm/yyyy')) """
+        sql_insert_command = f""" INSERT INTO Produto(id, Estoque, NomedoProduto, NomedoFabricante, Volume, Validade) 
+        VALUES ({max_id},{estoque},UPPER('{nomeDoProduto}'),UPPER('{nomeDoFabricante}'),{volume}, TO_DATE('{validade}','dd/mm/yyyy')) """
         try:
             #Criando o cursor
             cur = connection.cursor()
@@ -137,7 +138,7 @@ def query():
             sql_query_command = f""" SELECT I.CNPJ, I.Nome, P.id AS ID, 
              P.NomedoProduto, P.Validade, I.Rua || ', ' || I.Numero || '. ' || I.Cidade || ', ' ||
               I.UF AS Endereco FROM Estoque E JOIN Instituicao I ON E.PontoDeColeta = I.CNPJ 
-              JOIN Produto P ON P.Estoque = I.CNPJ WHERE P.NomedoProduto LIKE '%{produto}%' ORDER BY P.Validade"""
+              JOIN Produto P ON P.Estoque = I.CNPJ WHERE P.NomedoProduto LIKE UPPER('%{produto}%') ORDER BY P.Validade"""
 
             try:
                 #Criando o cursor

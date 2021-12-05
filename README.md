@@ -16,7 +16,7 @@ pip install pandas
 ```
 
 ## Conectando ao SGBD
-Para a conexão da aplicação com o SGBD, crie um arquivo chamado **__sqlConnection__**, que deverá conter o código abaixo:
+Para a conexão da aplicação com o SGBD, crie um arquivo chamado **__sqlConnection.py__**, que deverá conter o código abaixo:
 
 ```python
 
@@ -65,4 +65,5 @@ Foram implementadas as seguintes funções:
 ![Tela de inserção](./image/queryWindow.PNG)
 
 E tem como retorno a lista de todos os pontos de coleta que possuem estoque desse item disponível, ordenados pela data de validade:
+
 ![Tela de inserção](./image/resultWindow.PNG)
