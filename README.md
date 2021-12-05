@@ -3,7 +3,7 @@ Conclusão do projeto desenvolvido para a disciplina **__SCC0640 - Bases de Dado
 
 Trata-se de um sistema desenvolvido para facilitar o monitoramento e atendimento das demandas de moradores de rua (algumas liberdades foram tomadas ao decorrer do projeto, de forma que o resultado final não necessariamente reflete de forma fidedigna a realidade brasileira).
 
-![Modelo Entidade Relacionamento do Banco de Dados](./image/MER.PNG)
+![Modelo Entidade Relacionamento do Banco de Dados](./image/MER.png)
 
 ## Pré-requisitos
 Para efetuar a conexão da aplicação ao SGBD, é necessário instalar o [Oracle Instant Cliente](https://www.oracle.com/br/database/technologies/instant-client/winx64-64-downloads.html).
@@ -64,4 +64,4 @@ Foram implementadas as seguintes funções:
 ![Tela de inserção](./image/insertWindow.PNG)
 
 E tem como retorno a lista de todos os pontos de coleta que possuem estoque desse item disponível, ordenados pela data de validade:
-![Tela de inserção](./image/resulttWindow.PNG)
+![Tela de inserção](./image/resultWindow.PNG)
