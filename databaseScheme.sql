@@ -25,7 +25,7 @@ CREATE TABLE Alergias(
 
 CREATE TABLE Habilidades(
     MoradorDeRua NUMBER NOT NULL,
-    Habilidades NUMBER, /*conferir na parte 1*/
+    Habilidades NUMBER, 
     CONSTRAINT PK_Habilidades PRIMARY KEY (MoradorDeRua, Habilidades),
     CONSTRAINT FK_Habilidades FOREIGN KEY (MoradorDeRua) REFERENCES MoradorDeRua(CPF) ON DELETE SET NULL
 );
@@ -99,14 +99,13 @@ CREATE TABLE Atendimento(
 
 CREATE TABLE PontoDeColeta(
     Instituicao NUMBER NOT NULL,
-    HorarioDeFuncionamento VARCHAR(20), /*Verificar depois [por enquanto fica como uma string]*/
+    HorarioDeFuncionamento VARCHAR(20),
     CONSTRAINT PK_PontoDeColeta PRIMARY KEY (Instituicao),
     CONSTRAINT FK_PontoDeColeta FOREIGN KEY (Instituicao) REFERENCES Instituicao(CNPJ) ON DELETE SET NULL
 );
 
 CREATE TABLE Estoque(
     PontoDeColeta  NUMBER NOT NULL,
-    /* Lotacao NUMBER, ----> Atributo DERIVADO*/
     CapacidadeArmazenamento NUMBER,
     CONSTRAINT PK_Estoque PRIMARY KEY(PontoDeColeta),
     CONSTRAINT FK_Estoque FOREIGN KEY (PontoDeColeta) REFERENCES PontoDeColeta(Instituicao) ON DELETE SET NULL
@@ -118,8 +117,7 @@ CREATE TABLE Produto(
     NomedoProduto VARCHAR(40) NOT NULL,
     NomedoFabricante VARCHAR(40) NOT NULL,
     Volume NUMBER,
-    Validade DATE, /*alterei de Idade para Validade*/
-    /*Quantidade disponivel NUMBER - derivado*/
+    Validade DATE, 
     CONSTRAINT PK_Produto PRIMARY KEY (id),
     CONSTRAINT FK_Produto FOREIGN KEY (Estoque) REFERENCES Estoque(PontoDeColeta) ON DELETE SET NULL
 );
@@ -129,7 +127,6 @@ CREATE TABLE Alimento(
     Peribilidade CHAR(1),
     TeorCalorico NUMBER,
     DataVencimento DATE,
-    /*CONSTRAINT PK_Alimento PRIMARY KEY (Produto),*/
     CONSTRAINT FK_Alimento FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL
 );
 
@@ -158,7 +155,6 @@ CREATE TABLE Doador(
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
     DataNascimento DATE,
-    Idade NUMBER, /*talvez tirar*/
     DataCadastro DATE,
     NumeroDoacoes NUMBER,
     CONSTRAINT PK_Doador PRIMARY KEY (CPF),
@@ -216,7 +212,6 @@ CREATE TABLE Dormitorio(
     TipoAcomodacao VARCHAR(30),
     Capacidade NUMBER,
     PessoasAcomodadas NUMBER,
-    /*VagasDisponiveis NUMBER, ----> Atributo DERIVADO*/
     CONSTRAINT PK_Dormitorio PRIMARY KEY (Instituicao),
     CONSTRAINT FK_Dormitorio FOREIGN KEY (Instituicao) REFERENCES Instituicao(CNPJ) ON DELETE SET NULL  
 );
@@ -227,7 +222,6 @@ CREATE TABLE Estadia(
     MoradorDeRua NUMBER NOT NULL,
     Entrada DATE NOT NULL,
     Saida DATE,
-    /*TempoPermanencia DATE, ----> Atributo DERIVADO*/
     CONSTRAINT PK_Estadia PRIMARY KEY (id),
     CONSTRAINT SK_Estadia UNIQUE (Dormitorio, MoradorDeRua, Entrada),
     CONSTRAINT FK_Estadia_1 FOREIGN KEY (Dormitorio) REFERENCES Dormitorio(Instituicao) ON DELETE SET NULL,

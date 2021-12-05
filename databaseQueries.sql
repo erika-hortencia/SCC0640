@@ -50,18 +50,6 @@ FROM
     ON
     C.MoradorDeRua = M.CPF
 
-/*
-SELECT 
-    D.Nome, 
-    DF.Montante
-FROM    
-    Doador D
-LEFT JOIN
-    DoacaoFinanceira DF
-ON
-    D.CPF = DF.Doador;
-*/
-
 /*  Consultar os produtos fornecidos aos moradores de rua para checar se houve recebimento
     de itens que podem causar reação alérgica
 */
@@ -168,7 +156,7 @@ ORDER BY
     P.Validade
 
 /*  Consulta todos os pontos de coleta que tem um produto especifico
-    [Nesse caso contulamos todos os pontos de coleta que têm o medicamento Dipirona]
+    [Nesse caso consultamos todos os pontos de coleta que têm o medicamento Dipirona]
 */
 SELECT
     I.CNPJ,

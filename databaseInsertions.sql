@@ -80,7 +80,7 @@ INSERT INTO Alergias
 INSERT INTO Alergias
     VALUES(01467587600, 'UVA, AMOXICILINA, NOZES');
 
-/*Tabela Habilidades*/ /*por hora: 0<habilidades<10*/
+/*Tabela Habilidades*/
 INSERT INTO Habilidades
     VALUES(06955111458, 4);
 
@@ -240,13 +240,13 @@ INSERT INTO Consulta
     VALUES(001, 29210000625874, 06955111458, TO_DATE('30/11/2021','dd/mm/yyyy'), 'SERVICO');
     
 INSERT INTO Consulta
-    VALUES(002, 29210000625874, 03557111454, TO_DATE('15/07/2015','dd/mm/yyyy'), 'OPORTUNIDADE');
+    VALUES(002, 29210000625874, 03557111454, TO_DATE('15/07/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
 
 INSERT INTO Consulta
     VALUES(003, 23172482000162, 01467587600, TO_DATE('30/01/2021','dd/mm/yyyy'), 'SERVICO');
     
 INSERT INTO Consulta
-    VALUES(004, 23172482000162, 01467192700, TO_DATE('30/11/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
+    VALUES(004, 23172482000162, 01467192700, TO_DATE('30/01/2021','dd/mm/yyyy'), 'OPORTUNIDADE');
 
 INSERT INTO Consulta
     VALUES(005, 29210000625874, 01467192700, TO_DATE('10/01/2021','dd/mm/yyyy'), 'SERVICO');
@@ -272,6 +272,13 @@ INSERT INTO Atendimento
 INSERT INTO Atendimento
     VALUES(003, 44343495000127, 005, 01467192700, TO_DATE('01/07/2021','dd/mm/yyyy'), 'EDUCACAO');
 
+INSERT INTO Atendimento
+    VALUES(004, 75716251241845, 002, 03557111454, TO_DATE('17/03/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
+
+INSERT INTO Atendimento
+    VALUES(005, 29283948625874, 004, 01467192700, TO_DATE('27/11/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
+
+
 /*Tabela Ponto de Coleta*/
 INSERT INTO PontoDeColeta
     VALUES(14785236995123, 'DE 08:00 A 18:00');
@@ -292,7 +299,7 @@ INSERT INTO Estoque
     NomedoProduto VARCHAR(40) NOT NULL,
     NomedoFabricante VARCHAR(40) NOT NULL,
     Volume NUMBER,
-    Validade DATE, """alterei de Idade para Validade"""*/
+    Validade DATE, */
 INSERT INTO Produto
     VALUES(001, 14785236995123, 'MACARRAO', 'RENATA', 1, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
@@ -441,24 +448,23 @@ INSERT INTO Medicamento
     CPF NUMBER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
     DataNascimento DATE,
-    Idade NUMBER, """talvez tirar"""
     DataCadastro DATE,
     NumeroDoacoes NUMBER,
 */
 INSERT INTO Doador
-    VALUES(03256987412, 'ERIKA', TO_DATE('05/12/1997', 'dd/mm/yyyy'), 24, TO_DATE('29/11/2021', 'dd/mm/yyyy'), 1);
+    VALUES(03256987412, 'ERIKA', TO_DATE('05/12/1997', 'dd/mm/yyyy'), TO_DATE('29/11/2021', 'dd/mm/yyyy'), 1);
 
 INSERT INTO Doador
-    VALUES(47856321778, 'DANIEL', TO_DATE('25/07/2000', 'dd/mm/yyyy'),21, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 1);
+    VALUES(47856321778, 'DANIEL', TO_DATE('25/07/2000', 'dd/mm/yyyy'), TO_DATE('30/11/2021', 'dd/mm/yyyy'), 1);
 
 INSERT INTO Doador
-    VALUES(45678932101, 'BILL GATES', TO_DATE('28/04/1960', 'dd/mm/yyyy'),21, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 7); /*alterar*/
+    VALUES(45678932101, 'BILL GATES', TO_DATE('28/04/1960', 'dd/mm/yyyy'), TO_DATE('30/11/2021', 'dd/mm/yyyy'), 7); /*alterar*/
 
 INSERT INTO Doador
-    VALUES(02547896312, 'JEFF BEZOS', TO_DATE('08/09/1970', 'dd/mm/yyyy'),21, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 6);
+    VALUES(02547896312, 'JEFF BEZOS', TO_DATE('08/09/1970', 'dd/mm/yyyy'), TO_DATE('30/11/2021', 'dd/mm/yyyy'), 6);
 
 INSERT INTO Doador
-    VALUES(02578412033, 'ELON MUSK', TO_DATE('07/04/1975', 'dd/mm/yyyy'),21, TO_DATE('30/11/2021', 'dd/mm/yyyy'), 5);
+    VALUES(02578412033, 'ELON MUSK', TO_DATE('07/04/1975', 'dd/mm/yyyy'), TO_DATE('30/11/2021', 'dd/mm/yyyy'), 5);
 
 /*Tabela DoacaoFinanceira
     id NUMBER NOT NULL,
@@ -685,10 +691,10 @@ INSERT INTO Estadia
     CONSTRAINT FK_Oportunidade_3 FOREIGN KEY (idConsulta) REFERENCES Consulta(id) ON DELETE SET NULL
 */
 INSERT INTO Oportunidade
-    VALUES(001, 75716251241845, 002, 29210000625874, TO_DATE('17/05/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
+    VALUES(001, 75716251241845, 002, 29210000625874, TO_DATE('17/07/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
 
 INSERT INTO Oportunidade
-    VALUES(002, 29283948625874, 004, 23172482000162, TO_DATE('22/11/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
+    VALUES(002, 29283948625874, 004, 23172482000162, TO_DATE('01/02/2021', 'dd/mm/yyyy'), 'OPORTUNIDADE');
 
 /*Tabela Serviço
     id NUMBER NOT NULL,
