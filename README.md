@@ -1,5 +1,9 @@
 # SCC0640
-Trabalho final da disciplina SCC-0640.
+Conclusão do projeto desenvolvido para a disciplina **__SCC0640 - Bases de Dados__**, ministrada pelo **__Instituto de Ciências Matemáticas e de Computação__** durante o segundo semestre de 2021. O intuito principal era projetar o banco de dados para o sistema e também desenvolver uma aplicação que fosse capaz de interagir com o mesmo.
+
+Trata-se de um sistema desenvolvido para facilitar o monitoramento e atendimento das demandas de moradores de rua (algumas liberdades foram tomadas ao decorrer do projeto, de forma que o resultado final não necessariamente reflete de forma fidedigna a realidade brasileira).
+
+![Modelo Entidade Relacionamento do Banco de Dados](./image/MER.PNG)
 
 ## Pré-requisitos
 Para efetuar a conexão da aplicação ao SGBD, é necessário instalar o [Oracle Instant Cliente](https://www.oracle.com/br/database/technologies/instant-client/winx64-64-downloads.html).
@@ -47,9 +51,17 @@ def connect():
 ```
 
 ## A aplicação
-Foram implementadas as opções funções:
+Foram implementadas as seguintes funções:
 
 ![Tela inicial](./image/homeWindow.PNG)
 
-- Cadastro de um produto: essa função que insere um produto no estoque de um ponto de coleta específico
+- **__Cadastro de um produto__**: essa função que insere um produto no estoque de um ponto de coleta específico
 
+![Tela de inserção](./image/insertWindow.PNG)
+
+- **__Busca de produto__**: essa função permite buscar um produto por **__nome__**
+
+![Tela de inserção](./image/insertWindow.PNG)
+
+E tem como retorno a lista de todos os pontos de coleta que possuem estoque desse item disponível, ordenados pela data de validade:
+![Tela de inserção](./image/resulttWindow.PNG)
