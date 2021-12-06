@@ -127,6 +127,7 @@ CREATE TABLE Alimento(
     Peribilidade CHAR(1),
     TeorCalorico NUMBER,
     DataVencimento DATE,
+    CONSTRAINT PK_Alimento PRIMARY KEY (Produto),
     CONSTRAINT FK_Alimento FOREIGN KEY (Produto) REFERENCES Produto(id) ON DELETE SET NULL
 );
 

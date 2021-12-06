@@ -388,7 +388,7 @@ INSERT INTO Alimento
     VALUES(001, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
 INSERT INTO Alimento
-    VALUES(003, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
+    VALUES(002, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
 
 INSERT INTO Alimento
     VALUES(003, 'S', 50, TO_DATE('02/02/2022','dd/mm/yyyy'));
