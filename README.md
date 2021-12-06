@@ -51,7 +51,7 @@ def connect():
 ```
 Para o código funcionar é necessário substituir 'SEU_USUARIO' e 'SUA_SENHA' pelo dados da sua conexão Oracle. Vale ressaltar que é necessário também substituir "ENDEREÇO DO INSTANT CLIENTE NO SEU PC" pelo endereço em que foi instalado o instantclient, além de incluir este diretório nas variantes de ambiente "Path" do computador.
 
-Por fim, execute o comando ''' python3 gui.py '''.
+Por fim, execute o comando ``` python3 gui.py ```.
 
 ## A aplicação
 Foram implementadas as seguintes funções:
